@@ -21,6 +21,10 @@ const options = {
     defaultDate: new Date(),
     minuteIncrement: 1,
     onClose(selectedDates) {
+        const selectedDate = selectedDates[0]
+        if (selectedDate < new Date()) {
+            window.alert("Please choose a date in the future")
+        }
         if (selectedDates[0] < options.defaultDate) {
             iziToast.error({
                 title: 'Error',
@@ -47,6 +51,8 @@ const options = {
 
 
 flatpickr("#datetime-picker", options);
+
+
 
 function convertMs(ms) {
     // Number of milliseconds per unit of time
